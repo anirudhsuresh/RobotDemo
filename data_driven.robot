@@ -26,12 +26,17 @@ Multiplication        12 * 2 * 2    48
 Division              12 / 2 / 2    3
                       2 / -3        -1
 
-Failing               1 + 1         3
+Failing               1 + 1         2
 
 Calculation error     [Template]    Calculation should fail
                       kekkonen      Invalid button 'k'.
                       ${EMPTY}      Invalid expression.
                       1 / 0         Division by zero.
+
+
+Push 1                1             1
+Push 2                2             2
+Push 3                3             3
 
 *** Keywords ***
 Calculate

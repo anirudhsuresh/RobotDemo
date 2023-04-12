@@ -22,18 +22,37 @@ Push multiple buttons
     Push button    2
     Result should be    12
 
-Simple calculation
+Simple calculation modified
     Push button    1
-    Push button    +
-    Push button    2
+    Push button    *
+    Push button    9
     Push button    =
-    Result should be    3
+    Result should be    9
 
 Longer calculation
     Push buttons    5 + 4 - 3 * 2 / 1 =
-    Result should be    3
+    result should be    3
+
+Calculate this hard expression
+    Push buttons        1 + 2 * 3= 
+    Result should be    7
+
 
 Clear
-    Push button    1
-    Push button    C
+    Push button     1
+    Push button     C
     Result should be    ${EMPTY}    # ${EMPTY} is a built-in variable
+
+Divide By Zero Should Fail
+    Push buttons    1 / 0 
+    should cause error      invalid
+
+
+Test that all buttons return the same value clicked 
+    @{buttons}=    create list    1    2    3    4    5    6    7    8    9    0
+    FOR    ${button}    IN    @{buttons}
+        Log   ${button}
+        Push button         ${button}
+        Result should be    ${button}
+        Push button         C
+    END
